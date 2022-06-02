@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="BudgetScheduler.Views.AddOperationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BudgetScheduler.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:BudgetScheduler.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.DataContext>
+        <viewmodels:AddOperationControlViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="220*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="220"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Width="80" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top">Тип операции</TextBlock>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Left" MinWidth="100" MinHeight="30" Name="OperationType" ItemsSource="{Binding OperationTypes}" SelectedValue="{Binding SelectedOperationType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Width="140" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top">Категория операции</TextBlock>
+        <ComboBox Grid.Row="0" Grid.Column="2" Margin="0,20,0,0" HorizontalAlignment="Stretch" MinHeight="30" Name="OperationCategory" ItemsSource="{Binding OperationCategory, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding SelectedOperationCategory, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top">Сумма операции</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,20,0,0" MinHeight="30" Name="OperationSumm" Text="{Binding OperationSumm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center">Комментарий</TextBlock>
+        <TextBox MinHeight="50" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,80,0,0" Name="Commentary" Text="{Binding Commentary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TextWrapping="Wrap"/>
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="1" Name="AddOperation" Command="{Binding Command}" Content="Добавить операцию"/>
+    </Grid>
+</UserControl>

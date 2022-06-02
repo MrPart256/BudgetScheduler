@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Operations](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[summ] [float] NULL,
+	[type] [nvarchar](20) NULL,
+	[category] [nvarchar](30) NULL,
+	[commentary] [nvarchar](50) NULL,
+	[date] [date] NULL
+)

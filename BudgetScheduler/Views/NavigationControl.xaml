@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="BudgetScheduler.Views.NavigationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BudgetScheduler.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:BudgetScheduler.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewmodels:NavigationControlViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <NavigationView IsPaneOpen="False" HorizontalAlignment="Stretch" PaneDisplayMode="LeftMinimal" ItemInvoked="{x:Bind viewmodels:NavigationControlViewModel.OnItemInvoked}" >
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Добавить операцию"/>
+                <NavigationViewItem Content="Посмотреть операции"/>
+                <NavigationViewItem Content="Посмотреть статистику"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+    </Grid>
+</UserControl>
